@@ -7,6 +7,9 @@
  */
 const flatten = arr => {
   // 补全代码
+  if (!Array.isArray(arr)) {
+    throw new TypeError('arr must be array')
+  }
   let result = []
   for (let i = 0; i < arr.length; i++) {
     if (typeof arr[i] === 'number') {
