@@ -10,7 +10,7 @@ function testFn(ruleArr) {
     let newVersion = ruleArr[i].newVersion;
     let result = ruleArr[i].result;
     test(`${oldVersion} with ${newVersion} should be ${result}`, () => {
-      shouldUpdate(oldVersion, newVersion);
+      expect(shouldUpdate(oldVersion, newVersion)).toBe(result);
     });
   }
 }
