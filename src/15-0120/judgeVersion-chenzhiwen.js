@@ -54,8 +54,13 @@ const shouldUpdate = (oldVersion, newVersion) => {
     } else if (newArr[i] === oldArr[i]) {
       // do nothing
       // 什么也不做，进入下一轮循环，比较下一位版本号
+      if (i == 2) {
+        return false
+      }
     } else {
       return false
     }
   }
 }
+
+export default shouldUpdate
