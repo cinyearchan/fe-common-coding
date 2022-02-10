@@ -33,7 +33,7 @@
  * @param {number[]} digits
  * @return {number[]}
  */
-var plusOne = function(digits) {
+ var plusOne = function(digits) {
   // 当前加法本质：从后往前遍历，如果当前位不是9，则直接加1，如果是9，则把当前位置置为0，然后继续往前遍历，直到最后一位不是9，则直接加1
   // 汽车里程表
   // 便于理解，先将数组进行翻转，从前往后进行遍历操作
@@ -43,6 +43,9 @@ var plusOne = function(digits) {
   for (let i = 0; i < len; i++) {
     if (temp[i] === 9) {
       temp[i] = 0
+      if (i === len - 1 && i !== 99) {
+        temp.push(1)
+      }
     } else {
       temp[i] += 1
       break
