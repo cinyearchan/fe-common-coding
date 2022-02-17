@@ -30,7 +30,7 @@ var removeDuplicates = function(s) {
   let i = 0
   let reg = /^[a-z]+$/i
   while (i < s.length - 2 && s.length !== 0) {
-    if (!reg.test(s[i]) || reg.test(s[i + 1])) {
+    if (!reg.test(s[i]) || !reg.test(s[i + 1])) {
       throw new Error('invalid input')
     }
     if (s[i] === s[i + 1]) {
