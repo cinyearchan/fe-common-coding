@@ -31,6 +31,7 @@
  */
 
 var RecentCounter = function () {
+  this.pingCount = 0
   this.count = []
 }
 
@@ -42,12 +43,20 @@ RecentCounter.prototype.ping = function (t) {
   if (!t || typeof t !== 'number') {
     return null
   }
-  if (this.count.length === 0 || t <= this.count[this.count.length - 1]) {
-    throw new Error('')
+  if (this.pingCount > 104) {
+    throw new Error('不能再调用 ping 方法')
+  }
+  if (t <= this.count[this.count.length - 1]) {
+    throw new Error('必须保证每次对 ping 调用所使用的 t 值都严格递增')
   } else {
-    this.count.push(t)
-    let left = t - 3000
-    let index = this.count.findIndex(item => item >= left)
-    return this.count.slice(index).length
+    if (t >= 1 && t <= 109 && this.pingCount < 104) { // t 大于等于1 小于等于 109；ping 调用次数限制为 104 次
+      this.pingCount++
+      this.count.push(t)
+      let left = t - 3000
+      let index = this.count.findIndex(item => item >= left)
+      return this.count.slice(index).length
+    } else {
+      throw new Error('超出限制')
+    }
   }
 }
