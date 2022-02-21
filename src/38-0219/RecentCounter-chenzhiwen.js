@@ -60,3 +60,5 @@ RecentCounter.prototype.ping = function (t) {
     }
   }
 }
+
+export default RecentCounter
