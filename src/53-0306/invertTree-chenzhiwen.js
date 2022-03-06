@@ -28,8 +28,8 @@
  * @param {TreeNode} root
  * @return {TreeNode}
  */
-var invertTree = function (root) {
-  if (!root) {
+ var invertTree = function (root) {
+  if (root === null || root.val === null) {
     return null
   }
   let left = root.left
